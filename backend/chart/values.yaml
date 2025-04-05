@@ -1,0 +1,28 @@
+replicaCount: 1
+
+image:
+  repository: jeevitha12/backend-app
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 5000
+
+containerPort: 5000
+serviceAccount:
+  create: true
+  name: ""
+
+ingress:
+  enabled: false
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 80
+
+persistence:
+  enabled: true
+  accessMode: ReadWriteOnce
+  size: 1Gi
